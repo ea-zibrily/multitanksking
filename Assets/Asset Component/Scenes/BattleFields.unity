@@ -214,7 +214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &333175621
 Animator:
   serializedVersion: 5
@@ -247,12 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78535ba9882afb34d8e19d971f1f7c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomId: 2778a7a3-57e2-46e0-a6c0-4b81cd6f3a78
-  playerIndex: 1
-  playerId: 1f866cb9-1952-4d0a-a64b-54455b9c600b
-  playerName: KAISER CUY
-  isLocalPlayer: 0
-  ActivePlayer: 1
   tankSpeed: 0
   tankMoveInput: {x: 0, y: 0}
 --- !u!61 &333175623
@@ -751,12 +745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78535ba9882afb34d8e19d971f1f7c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomId: 2778a7a3-57e2-46e0-a6c0-4b81cd6f3a78
-  playerIndex: 0
-  playerId: 1f866cb9-1952-4d0a-a64b-54455b9c600b
-  playerName: ISAGOAT
-  isLocalPlayer: 1
-  ActivePlayer: 1
   tankSpeed: 7
   tankMoveInput: {x: 0, y: 0}
 --- !u!1 &1442957139
@@ -893,7 +881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1542035341
 Transform:
   m_ObjectHideFlags: 0
@@ -935,8 +923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldOriginTransform: {fileID: 0}
   SpawnPrefabs:
-  - {fileID: 386918938186674987, guid: e9bf58b0cd290ad4192bab4126752497, type: 3}
-  - {fileID: 2323112689736472552, guid: c2732d62bec55b94986f538e06a8259a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   SpawnInfo:
   - position: {x: -10.24, y: -1.754405, z: 0}
     rotation: {x: 0, y: -90, z: 0}

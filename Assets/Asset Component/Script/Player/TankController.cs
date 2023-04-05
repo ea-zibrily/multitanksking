@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using EdgeMultiplay;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class TankMove : NetworkedPlayer
+public class TankController : MonoBehaviour
 {
     #region Basic Components
 
@@ -26,31 +27,37 @@ public class TankMove : NetworkedPlayer
     
     [Header("Reference")]
     private GameManager gameManager;
+    private PlayerManager playerManager;
     private Rigidbody2D myRb;
     private Animator myAnim;
 
     #endregion
     
-    void OnEnable()
+    private void OnEnable()
     {
-        ListenToMessages();
-        gameManager = FindObjectOfType<GameManager>();
+        // ListenToMessages();
+        // gameManager = FindObjectOfType<GameManager>();
+        // playerManager = FindObjectOfType<PlayerManager>();
         myRb = GetComponent<Rigidbody2D>();
+        myAnim = GetComponent<Animator>();
     }
-    void OnDestroy()
+    private void OnDestroy()
     {
-        StopListening();
+        // StopListening();
     }
     
     private void FixedUpdate()
     {
-        if (isLocalPlayer && ActivePlayer)
-        {
-            PlayerController();
-        }
+        // if (isLocalPlayer && ActivePlayer)
+        // {
+        //     PlayerMovement();
+        // }
+        PlayerMovement();
     }
 
-    private void PlayerController()
+    #region Controller Methods
+
+    private void PlayerMovement()
     {
         float moveHorizontal, moveVertical;
         moveHorizontal = Input.GetAxis("Horizontal");
@@ -76,21 +83,23 @@ public class TankMove : NetworkedPlayer
             myAnim.SetBool(IS_MOVING, false);
         }
     }
-    
-    #region NetworkedPlayer Callbacks
-
-    public override void OnMessageReceived(GamePlayEvent gameEvent)
-    {
-        switch (gameEvent.eventName)
-        {
-            case "restart":
-                gameManager.RestartGame();
-                break;
-            case "score":
-                gameManager.UpdateScore(gameEvent.integerData[0], gameEvent.integerData[1]);
-                break;
-        }
-    }
 
     #endregion
+    
+    // #region NetworkedPlayer Callbacks
+    //
+    // public override void OnMessageReceived(GamePlayEvent gameEvent)
+    // {
+    //     switch (gameEvent.eventName)
+    //     {
+    //         case "restart":
+    //             gameManager.RestartGame();
+    //             break;
+    //         case "score":
+    //             gameManager.UpdateScore(gameEvent.integerData[0], gameEvent.integerData[1]);
+    //             break;
+    //     }
+    // }
+    //
+    // #endregion
 }

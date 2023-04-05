@@ -1,5 +1,6 @@
 using UnityEngine;
 using EdgeMultiplay;
+using UnityEngine.SceneManagement;
  
 [RequireComponent(typeof(EdgeManager))]
 public class GameManager : EdgeMultiplayCallbacks {

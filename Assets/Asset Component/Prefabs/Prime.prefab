@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &386918938186675415
 Transform:
   m_ObjectHideFlags: 0
@@ -148,12 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78535ba9882afb34d8e19d971f1f7c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomId: 2778a7a3-57e2-46e0-a6c0-4b81cd6f3a782778a7a3-57e2-46e0-a6c0-4b81cd6f3a78
-  playerIndex: 0
-  playerId: 1f866cb9-1952-4d0a-a64b-54455b9c600b
-  playerName: ISAGOAT
-  isLocalPlayer: 1
-  ActivePlayer: 1
   tankSpeed: 7
   tankMoveInput: {x: 0, y: 0}
 --- !u!95 &386918938186674988

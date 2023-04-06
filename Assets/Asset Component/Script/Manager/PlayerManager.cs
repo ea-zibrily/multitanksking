@@ -9,6 +9,7 @@ public class PlayerManager : NetworkedPlayer
     [Header("Health Component")] 
     [SerializeField] private float maxHp;
     private float currentHp;
+    private bool isDeath;
     
     [Header("UI Component")] 
     public Image hpBar;
@@ -23,12 +24,24 @@ public class PlayerManager : NetworkedPlayer
 
     private void Update()
     {
-        healthInterface();
+        HealthInterface();
     }
 
     #region Health Method
+    
+    public float DecreaseHp(float damage)
+    {
+        currentHp -= damage;
+        if (currentHp <= 0)
+        {
+            currentHp = 0;
+            isDeath = true;
+        }
 
-    private void healthInterface()
+        return currentHp;
+    }
+    
+    private void HealthInterface()
     {
         hpBar.fillAmount = currentHp / maxHp;
         

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using EdgeMultiplay;
 using UnityEngine;
-using UnityEngine.Serialization;
+using CodeMonkey.Utils;
 
 public class TankController : MonoBehaviour
 {
@@ -11,7 +11,8 @@ public class TankController : MonoBehaviour
 
     [Header("Basic Components")] 
     [SerializeField] private float tankSpeed;
-    [SerializeField] private Vector2 tankMoveInput;
+    [SerializeField] private Vector2 tankMoveDirection;
+    [SerializeField] private Vector2 tankAimDirection;
 
     #endregion
 
@@ -36,8 +37,8 @@ public class TankController : MonoBehaviour
     private void OnEnable()
     {
         // ListenToMessages();
-        // gameManager = FindObjectOfType<GameManager>();
-        // playerManager = FindObjectOfType<PlayerManager>();
+        gameManager = FindObjectOfType<GameManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
     }
@@ -45,13 +46,23 @@ public class TankController : MonoBehaviour
     {
         // StopListening();
     }
-    
+
+    private void Update()
+    {
+        // if (isLocalPlayer && ActivePlayer)
+        // {
+        //     PlayerAim();
+        // }
+        PlayerAim();
+    }
+
     private void FixedUpdate()
     {
         // if (isLocalPlayer && ActivePlayer)
         // {
         //     PlayerMovement();
         // }
+        
         PlayerMovement();
     }
 
@@ -60,28 +71,24 @@ public class TankController : MonoBehaviour
     private void PlayerMovement()
     {
         float moveHorizontal, moveVertical;
-        moveHorizontal = Input.GetAxis("Horizontal");
-        moveVertical = Input.GetAxis("Vertical");
+        moveHorizontal = Input.GetAxisRaw("Horizontal");
+        moveVertical = Input.GetAxisRaw("Vertical");
         
-        tankMoveInput = new Vector2(moveHorizontal, moveVertical);
-        tankMoveInput.Normalize();
+        tankMoveDirection = new Vector2(moveHorizontal, moveVertical);
+        tankMoveDirection.Normalize();
         
-        myRb.velocity = tankMoveInput * tankSpeed;
-        PlayerAnimation();
+        myRb.velocity = tankMoveDirection * tankSpeed;
     }
-    
-    private void PlayerAnimation()
+
+    private void PlayerAim()
     {
-        if (tankMoveInput != Vector2.zero)
-        {
-            myAnim.SetFloat(HORIZONTAL_MOVE, tankMoveInput.x);
-            myAnim.SetFloat(VERTICAL_MOVE, tankMoveInput.y);
-            myAnim.SetBool(IS_MOVING, true);
-        }
-        else
-        {
-            myAnim.SetBool(IS_MOVING, false);
-        }
+        Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
+        Vector3 aimDirection = (mousePosition - transform.position);
+        aimDirection.Normalize();
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        
+        tankAimDirection = new Vector2(aimDirection.x, aimDirection.y);
+        myRb.rotation = angle;
     }
 
     #endregion

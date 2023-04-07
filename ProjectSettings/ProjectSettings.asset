@@ -521,7 +521,9 @@ PlayerSettings:
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
   cameraUsageDescription: 
-  locationUsageDescription: 
+  locationUsageDescription: Geo-Location is used by MobiledgeX SDK to locate the
+    closest edge cloudlet server and (where supported) for carrier enhanced Verify
+    Location services.
   microphoneUsageDescription: 
   bluetoothUsageDescription: 
   switchNMETAOverride: 

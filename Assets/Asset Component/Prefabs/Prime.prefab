@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1126684936872044020}
   - component: {fileID: 1126684936872044021}
   - component: {fileID: 1126684936872044026}
-  - component: {fileID: 1126684936872044027}
   - component: {fileID: 1126684936872044024}
   - component: {fileID: 1126684936872044025}
   - component: {fileID: 1126684936872044017}
@@ -152,31 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78535ba9882afb34d8e19d971f1f7c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomId: f303b25b-7761-4804-a5ea-4390c57e1ed9
+  playerIndex: 0
+  playerId: f33260ea-992f-45dc-8803-90cd098a5734
+  playerName: EPOS GALANG
+  isLocalPlayer: 1
+  ActivePlayer: 1
   tankSpeed: 5
   tankMoveDirection: {x: 0, y: 0}
   tankAimDirection: {x: 0, y: 0}
---- !u!114 &1126684936872044027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126684936872044030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c33a6380769709549a59e49ba059e91b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomId: 2778a7a3-57e2-46e0-a6c0-4b81cd6f3a78
-  playerIndex: 0
-  playerId: 1f866cb9-1952-4d0a-a64b-54455b9c600b
-  playerName: ISAGOAT
-  isLocalPlayer: 1
-  ActivePlayer: 1
-  maxHp: 100
-  hpBar: {fileID: 0}
-  hpEffect: {fileID: 0}
-  increaseHpBar: 0.007
 --- !u!114 &1126684936872044024
 MonoBehaviour:
   m_ObjectHideFlags: 0

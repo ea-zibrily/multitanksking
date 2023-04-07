@@ -260,7 +260,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &311512944
 GameObject:
@@ -878,6 +878,94 @@ RectTransform:
   m_AnchoredPosition: {x: 53, y: 31}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1133185812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1133185816}
+  - component: {fileID: 1133185819}
+  - component: {fileID: 1133185818}
+  - component: {fileID: 1133185817}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1133185816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133185812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1133185817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133185812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6647f8771f53471d9d27799b03112a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldOriginTransform: {fileID: 0}
+  SpawnPrefabs:
+  - {fileID: 7532288382210934652, guid: c2732d62bec55b94986f538e06a8259a, type: 3}
+  SpawnInfo:
+  - position: {x: 2, y: 0, z: 0}
+    rotation: {x: 5, y: 0, z: 90}
+--- !u!114 &1133185818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133185812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e48b679aa3efea46ab55da1f12b986b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 50
+  currentHp: []
+  hpBar:
+  - {fileID: 1853576781}
+  - {fileID: 311512946}
+  hpEffect:
+  - {fileID: 951756621}
+  - {fileID: 1483632121}
+  playerName: {fileID: 967659233}
+  clogText: {fileID: 1793488017}
+  increaseHpBar: 0.007
+--- !u!114 &1133185819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133185812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1e1f49021854c59abbe7d3b689b38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeOut: 20
 --- !u!1 &1223633263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,97 +1198,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483632119}
   m_CullTransparentMesh: 1
---- !u!1 &1542035340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1542035341}
-  - component: {fileID: 1542035344}
-  - component: {fileID: 1542035343}
-  - component: {fileID: 1542035342}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: GameManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1542035341
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542035340}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5033019, y: -1.8368742, z: 0.017093245}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1542035342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542035340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1353d5fb695a5444ad7d3db68df2b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
-  currentHp: []
-  hpBar:
-  - {fileID: 1853576781}
-  - {fileID: 311512946}
-  hpEffect:
-  - {fileID: 1660836535}
-  - {fileID: 1988064044}
-  playerName: {fileID: 1856313688}
-  clogText: {fileID: 1793488017}
-  increaseHpBar: 0.007
---- !u!114 &1542035343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542035340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6647f8771f53471d9d27799b03112a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WorldOriginTransform: {fileID: 0}
-  SpawnPrefabs:
-  - {fileID: 1126684936872044026, guid: e9bf58b0cd290ad4192bab4126752497, type: 3}
-  - {fileID: 7532288382210934652, guid: c2732d62bec55b94986f538e06a8259a, type: 3}
-  SpawnInfo:
-  - position: {x: -10.24, y: -1.754405, z: 0}
-    rotation: {x: 0, y: -90, z: 0}
-  - position: {x: 5.63, y: -1.754405, z: 0}
-    rotation: {x: 0, y: 90, z: 0}
---- !u!114 &1542035344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542035340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e1e1f49021854c59abbe7d3b689b38c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeOut: 20
 --- !u!1 &1660836533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1370,7 @@ RectTransform:
   - {fileID: 1026970245}
   - {fileID: 881454509}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

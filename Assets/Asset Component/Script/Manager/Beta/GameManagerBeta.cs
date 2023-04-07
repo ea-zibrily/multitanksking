@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using EdgeMultiplay;
 using UnityEngine.SceneManagement;
+using EdgeMultiplay;
 using TMPro;
  
 [RequireComponent(typeof(EdgeManager))]
-public class GameManager : EdgeMultiplayCallbacks
+public class GameManagerBeta : EdgeMultiplayCallbacks
 {
     #region Some Variable
 
@@ -22,9 +22,7 @@ public class GameManager : EdgeMultiplayCallbacks
     [SerializeField] private float increaseHpBar;
 
     #endregion
-    
-    #region MonoBehaviour Callbacks
-    
+
     private void Awake()
     {
         currentHp = new float[2];
@@ -34,10 +32,9 @@ public class GameManager : EdgeMultiplayCallbacks
         }
     }
 
-    private void Start ()
-    {
+    // Use this for initialization
+    void Start () {
         ConnectToEdge();
-        Clog("Connecting in Edge");
     }
 
     private void Update()
@@ -45,58 +42,37 @@ public class GameManager : EdgeMultiplayCallbacks
         HealthInterface();
     }
 
-    #endregion
-    
-    #region EdgeMultiplay Callbacks
-
     // Called once connected to your server deployed on Edge
-    public override void OnConnectionToEdge()
-    {
+    public override void OnConnectionToEdge(){
         print ("Connected to server deployed on Edge");
     }
-    
+ 
     // Called once the server registers the player right after the connection is established
-    public override void OnRegisterEvent()
-    {
+    public override void OnRegisterEvent(){
         print ("Game Session received from server");
-        EdgeManager.JoinOrCreateRoom("playerName", 0, 2, minPlayersToStartGame:0);
+        EdgeManager.JoinOrCreateRoom("playerName", 0, 2);
     }
-    
+ 
     // Called once the JoinRoom request succeeded 
-    public override void OnRoomJoin(Room room)
-    {
+    public override void OnRoomJoin(Room room){
         print ("Joined room");
         print ("Maximum Players in the room :"+ room.maxPlayersPerRoom); 
         print ("Count of Players in the room :"+ room.roomMembers.Count); 
     }
-    
+ 
     // Called once the CreateRoom request succeeded 
-    public override void OnRoomCreated(Room room)
-    {
+    public override void OnRoomCreated(Room room){
         print ("Created a room");
         print ("Maximum Players in the room :"+ room.maxPlayersPerRoom); 
         print ("Count of Players in the room :"+ room.roomMembers.Count); 
     }
-    
+ 
     // Called once the Game start on the server
     // The game starts on the server once the count of room members reachs the maximum players per room
-    public override void OnGameStart()
-    {
-        Clog("Game started", true);
-        // foreach (NetworkedPlayer player in EdgeManager.currentRoomPlayers)
-        // {
-        //     playerName.text = player.playerName;
-        // }
+    public override void OnGameStart(){
+        print ("Game Started"); 
     }
-    
-    public override void OnPlayerLeft(RoomMemberLeft playerLeft)
-    {
-        Clog(EdgeManager.GetPlayer(playerLeft.idOfPlayerLeft).playerName + " left");
-    }
-
-    #endregion
-    
-
+ 
     #region GameManager Functions
     
     public void RestartGame()
@@ -150,5 +126,4 @@ public class GameManager : EdgeMultiplayCallbacks
     }
         
     #endregion
- 
 }

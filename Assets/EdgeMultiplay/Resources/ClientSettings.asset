@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7def378b872384b5b9526675226ca841, type: 3}
   m_Name: ClientSettings
   m_EditorClassIdentifier: 
-  useLocalHostServer: 0
-  hostIPAddress: 
+  useLocalHostServer: 1
+  hostIPAddress: 127.0.0.1
   WebSocketPort: 3000
   StatisticsPort: 7776
   UDPPort: 5000

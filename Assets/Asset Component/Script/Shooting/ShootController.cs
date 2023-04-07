@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ShootController : MonoBehaviour
 {
@@ -9,40 +10,43 @@ public class ShootController : MonoBehaviour
     [SerializeField] private float bulletLifeTime;
     [SerializeField] private GameObject bulletPrefab;
     [field: SerializeField] public float BulletDamage { get; private set; }
-
-    #endregion
-
-    #region Reference
-
-    [Header("Reference")]
-    private GameManager gameManager;
     [SerializeField] private Transform[] firePoint;
 
     #endregion
 
-    private void OnEnable()
+    #region Reference
+    
+    private TankController tankController;
+
+    #endregion
+
+    private void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        tankController = GetComponent<TankController>();
     }
 
     private void Update()
     {
-        // if (gameManager.ActivePlayer)
-        // {
-        //     if (Input.GetMouseButtonDown(0))
-        //     {
-        //         Shoot();
-        //     }
-        // }
-        
-        if (Input.GetMouseButtonDown(0))
+        if (tankController.isLocalPlayer && tankController.ActivePlayer)
         {
-            Shoot();
+            if (Input.GetMouseButtonDown(0))
+            {
+                Shoot();
+            }
         }
     }
 
     private void Shoot()
     {
+        if (firePoint.Length <= 1)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint[0].position, firePoint[0].rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(firePoint[0].right * bulletSpeed, ForceMode2D.Impulse);
+            
+            Destroy(bullet, bulletLifeTime);
+        }
+        
         if (firePoint.Length > 1)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint[0].position, firePoint[0].rotation);
@@ -56,15 +60,6 @@ public class ShootController : MonoBehaviour
             
             Destroy(bullet, bulletLifeTime);
             Destroy(bullet2, bulletLifeTime);
-        }
-        
-        if (firePoint.Length <= 1)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint[0].position, firePoint[0].rotation);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(firePoint[0].right * bulletSpeed, ForceMode2D.Impulse);
-            
-            Destroy(bullet, bulletLifeTime);
         }
     }
 }

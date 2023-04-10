@@ -9,49 +9,39 @@ public class Bullet : MonoBehaviour
     private TankController tankController;
     private ShootController shootController;
     private GameManager gameManager;
-    private ObservableView view;
-
-    private void OnEnable()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-    }
-
+    // private ObservableView view;
+    
     private void Awake()
     {
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         playerObject = GameObject.FindWithTag("Player").gameObject;
+        tankController = playerObject.GetComponent<TankController>();
         shootController = playerObject.GetComponent<ShootController>();
     }
 
-    private void Start()
-    {
-        view = GetComponent<ObservableView>();
-        if(view == null)
-        {
-            throw new System.Exception("Can't find ObservableView component on the Bullet.");
-        }
-    }
+    // private void Start()
+    // {
+    //     view = GetComponent<ObservableView>();
+    //     if(view == null)
+    //     {
+    //         throw new System.Exception("Can't find ObservableView component on the Bullet.");
+    //     }
+    // }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!view.OwnerIsLocalPlayer())
+        switch (collider.gameObject.tag)
         {
-            switch (col.gameObject.tag)
-            {
-                case "Player":
-                    EdgeManager.MessageSender.BroadcastMessage(new GamePlayEvent
-                    {
-                        eventName = "PlayerDamaged"
-                    });
-                    gameManager.DecreaseHp(shootController.BulletDamage, tankController.playerIndex);
-                    Destroy(gameObject);
-                    break;
-                case "Wall":
-                    Destroy(gameObject);
-                    break;
-                default:
-                    Debug.Log("Bullet hit something else");
-                    break;
-            }
+            case "Player":
+                gameManager.DecreaseHp(shootController.BulletDamage, tankController.playerIndex);
+                Destroy(gameObject);
+                break;
+            case "Wall":
+                Destroy(gameObject);
+                break;
+            default:
+                Debug.Log("Bullet hit something else");
+                break;
         }
     }
 }

@@ -13,6 +13,7 @@ public class TankController : NetworkedPlayer
     [SerializeField] private float tankSpeed;
     [SerializeField] private Vector2 tankMoveDirection;
     [SerializeField] private Vector2 tankAimDirection;
+    public int playerNumber;
 
     #endregion
 
@@ -94,7 +95,7 @@ public class TankController : NetworkedPlayer
     #endregion
     
     #region NetworkedPlayer Callbacks
-
+    
     public override void OnMessageReceived(GamePlayEvent gamePlayEvent)
     {
         base.OnMessageReceived(gamePlayEvent);
@@ -102,6 +103,7 @@ public class TankController : NetworkedPlayer
         {
             case "PlayerDamaged":
                 gameManager.DecreaseHp(shootController.BulletDamage, playerIndex);
+                Debug.Log("PlayerDamaged");
                 break;
             case "PlayerDeath":
                 gameManager.RestartGame();

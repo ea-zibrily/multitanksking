@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkedPlayer: {fileID: 0}
-  updateRate: 0
+  updateRate: 1
   observables:
   - observeredTransform: {fileID: 4877908056588310467}
     syncOption: 2

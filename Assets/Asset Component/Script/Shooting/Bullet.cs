@@ -33,6 +33,12 @@ public class Bullet : MonoBehaviour
         switch (collider.gameObject.tag)
         {
             case "Player":
+                EdgeManager.MessageSender.BroadcastMessage(new GamePlayEvent
+                {
+                    eventName = "playerHit",
+                    integerData = new int[2]
+                    { shootController.BulletDamage, tankController.playerIndex }
+                });
                 gameManager.DecreaseHp(shootController.BulletDamage, tankController.playerIndex);
                 Destroy(gameObject);
                 break;

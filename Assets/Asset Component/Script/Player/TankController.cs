@@ -38,19 +38,15 @@ public class TankController : NetworkedPlayer
     private void OnEnable()
     {
         ListenToMessages();
+        gameManager = FindObjectOfType<GameManager>();
+        myRb = GetComponent<Rigidbody2D>();
+        myAnim = GetComponent<Animator>();
     }
     private void OnDestroy()
     {
         StopListening();
     }
 
-    private void Awake()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-        myRb = GetComponent<Rigidbody2D>();
-        myAnim = GetComponent<Animator>();
-    }
-    
     private void Update()
     {
         if (isLocalPlayer && ActivePlayer)
@@ -102,7 +98,7 @@ public class TankController : NetworkedPlayer
         switch (gamePlayEvent.eventName)
         {
             case "PlayerDamaged":
-                gameManager.DecreaseHp(shootController.BulletDamage, playerIndex);
+                gameManager.DecreaseHp(gamePlayEvent.integerData[0], gamePlayEvent.integerData[1]);
                 Debug.Log("PlayerDamaged");
                 break;
             case "PlayerDeath":

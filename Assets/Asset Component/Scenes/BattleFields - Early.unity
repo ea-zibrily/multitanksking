@@ -535,13 +535,14 @@ GameObject:
   - component: {fileID: 586598518}
   - component: {fileID: 586598517}
   - component: {fileID: 586598519}
+  - component: {fileID: 586598520}
   m_Layer: 0
   m_Name: Prime
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &586598512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -719,6 +720,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &586598520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586598511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a804ed59794df49859448f348fea5a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkedPlayer: {fileID: 0}
+  updateRate: 0
+  observables:
+  - observeredTransform: {fileID: 586598513}
+    syncOption: 2
+    InterpolatePosition: 0
+    InterpolateRotation: 0
+    InterpolationFactor: 0
+    observableIndex: 0
+    lastPosition: {x: 0, y: 0, z: 0}
+    lastRotation: {x: -0, y: 0, z: 0}
+    owner: {fileID: 0}
+    attachedToPlayer: 0
+    squattingAllowed: 0
 --- !u!1 &632524426
 GameObject:
   m_ObjectHideFlags: 3
@@ -981,13 +1008,14 @@ GameObject:
   - component: {fileID: 962398153}
   - component: {fileID: 962398152}
   - component: {fileID: 962398151}
+  - component: {fileID: 962398158}
   m_Layer: 0
   m_Name: Kimaris
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &962398151
 Animator:
   serializedVersion: 5
@@ -1163,6 +1191,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &962398158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962398150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a804ed59794df49859448f348fea5a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkedPlayer: {fileID: 0}
+  updateRate: 0
+  observables:
+  - observeredTransform: {fileID: 962398157}
+    syncOption: 2
+    InterpolatePosition: 0
+    InterpolateRotation: 0
+    InterpolationFactor: 0
+    observableIndex: 0
+    lastPosition: {x: 0, y: 0, z: 0}
+    lastRotation: {x: -0, y: 0, z: 180}
+    owner: {fileID: 0}
+    attachedToPlayer: 0
+    squattingAllowed: 0
 --- !u!1 &967659231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1493,6 @@ MonoBehaviour:
   WorldOriginTransform: {fileID: 0}
   SpawnPrefabs:
   - {fileID: 4590909412066642122, guid: fd606770fc6fd1f4e978d00538ea1891, type: 3}
-  - {fileID: 4877908056588310471, guid: 49ab9f345499e064ebcdef813554c33f, type: 3}
   SpawnInfo:
   - position: {x: 3, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}

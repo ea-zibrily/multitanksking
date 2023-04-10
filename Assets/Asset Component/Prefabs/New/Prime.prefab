@@ -182,10 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78535ba9882afb34d8e19d971f1f7c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomId: 3ec11e90-9c3f-4142-bce4-b38409f375b4
+  roomId: 89f989fa-f422-46d5-b00e-5e7207256620
   playerIndex: 1
-  playerId: c94861df-db80-4956-93e9-eb389e467587
-  playerName: Bismillah
+  playerId: 61cf0341-3eb9-44d2-8db4-cd277c25f292
+  playerName: 'Player '
   isLocalPlayer: 0
   ActivePlayer: 1
   tankSpeed: 6
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkedPlayer: {fileID: 0}
-  updateRate: 0
+  updateRate: 1
   observables:
   - observeredTransform: {fileID: 4590909412066642118}
     syncOption: 2

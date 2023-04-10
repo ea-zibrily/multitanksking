@@ -44,7 +44,8 @@ public class GameManager : EdgeMultiplayCallbacks
 
     private void Update()
     {
-        HealthInterface();
+        HealthInterfacePlayer1();
+        HealthInterfacePlayer2();
     }
 
     #endregion
@@ -67,7 +68,7 @@ public class GameManager : EdgeMultiplayCallbacks
     public override void OnRegisterEvent()
     {
         print("Game Session received from server");
-        EdgeManager.JoinOrCreateRoom("Bismillah", 0, 2, minPlayersToStartGame:2);
+        EdgeManager.JoinOrCreateRoom("Player ", 0, 2, minPlayersToStartGame:2);
     }
     
     // Called once the JoinRoom request succeeded 
@@ -107,31 +108,42 @@ public class GameManager : EdgeMultiplayCallbacks
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
-    public void DecreaseHp(float damage, int playerIndex)
+    public void DecreaseHp(int damage, int playerIndex)
     {
         currentHp[playerIndex] -= damage;
         
         if (currentHp[playerIndex] <= 0)
         {
             currentHp[playerIndex] = 0;
+            EdgeManager.MessageSender.BroadcastMessage("playerDied");
             RestartGame();
         }
     }
     
-    private void HealthInterface()
+    private void HealthInterfacePlayer1()
     {
-        for (int i = 0; i < currentHp.Length; i++)
-        {
-            hpBar[i].fillAmount = currentHp[i] / maxHp;
+        hpBar[0].fillAmount = currentHp[0] / maxHp;
         
-            if (hpEffect[i].fillAmount > hpBar[i].fillAmount)
-            {
-                hpEffect[i].fillAmount -= increaseHpBar * speedIncreaseHpBar;
-            }
-            else
-            {
-                hpEffect[i].fillAmount = hpBar[i].fillAmount;
-            }
+        if (hpEffect[0].fillAmount > hpBar[0].fillAmount)
+        {
+            hpEffect[0].fillAmount -= increaseHpBar * speedIncreaseHpBar;
+        }
+        else
+        {
+            hpEffect[0].fillAmount = hpBar[0].fillAmount;
+        }
+    }
+    private void HealthInterfacePlayer2()
+    {
+        hpBar[1].fillAmount = currentHp[1] / maxHp;
+        
+        if (hpEffect[1].fillAmount > hpBar[1].fillAmount)
+        {
+            hpEffect[1].fillAmount -= increaseHpBar * speedIncreaseHpBar;
+        }
+        else
+        {
+            hpEffect[1].fillAmount = hpBar[1].fillAmount;
         }
     }
 

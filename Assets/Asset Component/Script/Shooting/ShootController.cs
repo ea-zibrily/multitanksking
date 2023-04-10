@@ -9,7 +9,7 @@ public class ShootController : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float bulletLifeTime;
     [SerializeField] private GameObject bulletPrefab;
-    [field: SerializeField] public float BulletDamage { get; private set; }
+    [field: SerializeField] public int BulletDamage { get; private set; }
     [SerializeField] private Transform[] firePoint;
 
     #endregion
